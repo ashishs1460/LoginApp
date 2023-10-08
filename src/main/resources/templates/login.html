@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <!-- Add Bootstrap CSS Link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Center the form vertically and horizontally */
+         h2 {
+            text-align: center;
+        }
+               /* Customize the button color */
+        .custom-login-btn {
+            background-color: #007BFF; /* Blue color */
+            color: #fff; /* White text color */
+            border: none;
+        }
+
+        .custom-login-btn:hover {
+            background-color: #0056b3; /* Darker blue color on hover */
+        }
+        .centered-form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* 100% of the viewport height */
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row centered-form">
+        <div class="col-md-6">
+            <div class="card">
+                <h2>Login</h2>
+                <div class="card-body">
+                    <div th:if="${param.error}" class="alert alert-danger" role="alert">Wrong username/password</div>
+                    <div th:if="${param.logout}" class="alert alert-success" role="alert">You have been logged out</div>
+                    <form th:action="@{/login}" method="post">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <div class="center">
+                        <button type="submit" class="btn custom-login-btn">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Bootstrap JS and jQuery Scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
